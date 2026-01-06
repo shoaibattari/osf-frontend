@@ -2,14 +2,7 @@ import { CommonButton } from "../../components";
 import { useAuthContext } from "../../context/AuthContext";
 
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import {
-  AdminCampusScreen,
-  AdminCourseScreen,
-  AdminDashboardScreen,
-  AdminEventScreen,
-  AdminParticipantsScreen,
-  AdminSignupScreen,
-} from "../../views/admin";
+import { SignupScreen } from "../../views/auth";
 
 const AdminLayout = () => {
   const { logout } = useAuthContext();
@@ -24,18 +17,6 @@ const AdminLayout = () => {
         <nav className="space-y-2">
           <Link to="/admin" className="block hover:underline">
             Dashboard
-          </Link>
-          <Link to="/admin/campus" className="block hover:underline">
-            Campus
-          </Link>
-          <Link to="/admin/courses" className="block hover:underline">
-            Courses
-          </Link>
-          <Link to="/admin/events" className="block hover:underline">
-            Events
-          </Link>
-          <Link to="/admin/participants" className="block hover:underline">
-            Participants
           </Link>
         </nav>
         <div className="mt-6 flex flex-col space-y-2">
@@ -59,12 +40,8 @@ const AdminLayout = () => {
           </CommonButton>
         </div>
         <Routes>
-          <Route path="/*" element={<AdminDashboardScreen />} />
-          <Route path="/courses" element={<AdminCourseScreen />} />
-          <Route path="/campus" element={<AdminCampusScreen />} />
-          <Route path="/events" element={<AdminEventScreen />} />
-          <Route path="/participants" element={<AdminParticipantsScreen />} />
-          <Route path="/Signup" element={<AdminSignupScreen />} />
+          {/* <Route path="/*" element={<AdminDashboardScreen />} /> */}
+          <Route path="/Signup" element={<SignupScreen />} />
         </Routes>
       </main>
     </div>

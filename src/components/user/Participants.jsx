@@ -1,5 +1,4 @@
 import React from "react";
-import ParticipantsTable from "../admin/Participants/ParticipantsTable";
 import { DynamicViewTitle } from "../common";
 
 const Participants = () => {
@@ -9,7 +8,6 @@ const Participants = () => {
         title={"Participants Management"}
         description={"View All Details According Events Participants "}
       />
-      <ParticipantsTable />
     </div>
   );
 };

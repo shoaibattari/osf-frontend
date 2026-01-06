@@ -4,7 +4,7 @@ import { AuthProvider } from "./context/AuthContext";
 import Root from "./config/routes";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
-import { AppProvider } from "./context/AppContext";
+import { ParticipantProvider } from "./context/ParticipantContext";
 
 const queryClient = new QueryClient();
 
@@ -13,11 +13,11 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ToastContainer position="top-right" autoClose={3000} />
       <BrowserRouter>
-        <AuthProvider>
-          <AppProvider>
+        <ParticipantProvider>
+          <AuthProvider>
             <Root />
-          </AppProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </ParticipantProvider>
       </BrowserRouter>
     </QueryClientProvider>
   );
