@@ -8,6 +8,10 @@ const authApi = (api) => ({
     api.post("/register", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }),
+  getParticipants: ({ search = "", page = 1, limit = 10 } = {}) =>
+    api.get("/register", {
+      params: { search, page, limit },
+    }),
 });
 
 export default authApi;

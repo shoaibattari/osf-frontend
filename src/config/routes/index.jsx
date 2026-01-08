@@ -9,7 +9,7 @@ const Root = () => {
   const { isAuthenticated, role, splashLoading } = useAuthContext();
 
   return (
-    <div className="relative pb-40 laptop-sm:pb-24 min-h-screen">
+    <div className=" relative laptop-sm:pb-24 min-h-screen">
       {splashLoading ? (
         <div className="h-screen flex flex-col items-center justify-center text-white bg-black w-full">
           <img src={logo} className="animate-pulse " alt="" />
@@ -64,7 +64,7 @@ const Root = () => {
         </Routes>
       )}
 
-      <footer className="absolute bottom-0 border-t py-6 text-center text-sm bg-black text-gray-50 w-full">
+      {/* <footer className="absolute bottom-0 border-t py-6 text-center text-sm bg-black text-gray-50 w-full ">
         <p>
           App Created:{" "}
           <a
@@ -81,7 +81,7 @@ const Root = () => {
           Serving the community with dedication since establishment
         </p>
         <p>© {new Date().getFullYear()} All Rights Reserved</p>
-      </footer>
+      </footer> */}
     </div>
   );
 };

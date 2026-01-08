@@ -25,7 +25,7 @@ const DynamicTable = ({
   rows = 5,
 }) => {
   // const [searchTerm, setSearchTerm] = useState("");
-
+  console.log(data);
   return (
     <div className="py-4 text-xs text-center laptop:text-sm desktop:text-sm _4k:text-base">
       {/* Search Bar & Row Selector */}
