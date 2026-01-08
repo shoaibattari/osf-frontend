@@ -1,95 +1,55 @@
-// src/components/landing/HomePage.jsx
+import { GiTrophyCup } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full">
-      {/* ================= HERO SECTION ================= */}
-      <div className="flex flex-col justify-center items-center text-center bg-gradient-to-b from-green/10 to-white px-6 py-10 laptop-sm:py-16">
-        {/* Logo */}
-        <img
-          src="/logo.png"
-          alt="Okhai Memon Jamat Logo"
-          className="h-28 md:h-40 mb-6 animate-fade-in-scale drop-shadow-2xl"
-        />
+    <div className=" flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Background Subtle Overlay for Sports Feel */}
 
-        {/* Titles */}
-        <h1 className="text-3xl phone:text-5xl tablet:text-6xl laptop:text-7xl font-extrabold text-green">
-          OKHAI MEMON JAMAT
-        </h1>
-        <h2 className="mt-2 text-xl phone:text-3xl tablet:text-4xl laptop:text-5xl font-bold text-primary">
-          SPORTS COMMITTEE
-        </h2>
+      {/* ================= MAIN UI CONTAINER ================= */}
+      <div className="relative z-10 flex flex-col justify-center items-center text-center px-6">
+        {/* Logo with White Glow */}
+        <div className="my-8 drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+          <img
+            src="/logo.jpg"
+            alt="Okhai Memon Jamat Logo"
+            className="h-32 w-32 md:h-44 md:w-44 rounded-full border-4 border-white object-contain bg-white"
+          />
+        </div>
 
-        {/* Tagline */}
-        <p className="mt-5 max-w-4xl text-base phone:text-lg tablet:text-xl laptop:text-2xl text-mediumGray animate-fade-slide">
-          Empowering the Okhai Memon Community through sports, youth development
-          initiatives.
+        {/* Top Label (Presents) */}
+        <p className="text-white italic text-lg md:text-xl font-medium tracking-wide mb-2">
+          The Okhai Memon Jamat Presents
         </p>
 
-        {/* CTA Buttons */}
-        <div className="mt-8 flex flex-col phone:flex-row gap-4">
+        {/* Main Heading - Poster Style White Text */}
+        <h1 className="text-4xl phone:text-6xl tablet:text-7xl laptop:text-8xl font-black text-white italic tracking-tighter uppercase drop-shadow-lg">
+          OKHAI SPORTS
+        </h1>
+
+        {/* Navy Blue Badge for "Festival" or "Committee" */}
+        <div className="-mt-2.5 bg-[#002D62] text-white px-8 py-2 rounded-md shadow-2xl transform -rotate-1 skew-x-[-10deg] border-b-4 border-black/20">
+          <h2 className="text-xl phone:text-3xl font-extrabold tracking-[0.2em] uppercase">
+            FESTIVAL
+          </h2>
+        </div>
+
+        {/* Tagline / Subtitle */}
+        <p className="mt-8 max-w-2xl text-white font-semibold text-lg md:text-2xl drop-shadow-md opacity-90 leading-snug">
+          Empowering the Okhai Memon Community through sports & youth
+          development.
+        </p>
+
+        {/* CTA Button - Green Theme from Logo */}
+        <div className="mt-10">
           <button
             onClick={() => navigate("/register")}
-            className="px-8 py-3 rounded-xl bg-green text-white font-semibold text-lg shadow-lg hover:scale-105 transition-all"
+            className=" px-4 laptop-sm:px-10 py-4 rounded-md cursor-pointer bg-[#4CAF50] hover:bg-[#388E3C] text-white font-bold text-sm laptop:text-xl uppercase tracking-wider shadow-[0_8px_0_rgb(27,94,32)] active:translate-y-[4px] active:shadow-none transition-all duration-150 flex items-center gap-3"
           >
-            📝 Register for Sports Event
+            <GiTrophyCup className="text-2xl" /> Join the Festival
           </button>
-        </div>
-      </div>
-
-      {/* ================= CORE SERVICES ================= */}
-      <div className="py-20 bg-lightBlue/30">
-        <h2 className="text-3xl laptop:text-5xl font-extrabold text-green text-center mb-14">
-          Our Core Services
-        </h2>
-
-        <div className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-4 gap-10 max-w-7xl mx-auto px-6">
-          {/* Card 1 */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all animate-fade-in-scale">
-            <div className="text-6xl mb-4">🎓</div>
-            <h3 className="text-xl font-bold text-green mb-2">
-              Educational Programs
-            </h3>
-            <p className="text-mediumGray">
-              IT courses, workshops, and learning initiatives for youth.
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all animate-fade-in-scale delay-100">
-            <div className="text-6xl mb-4">🤝</div>
-            <h3 className="text-xl font-bold text-green mb-2">
-              Community Welfare
-            </h3>
-            <p className="text-mediumGray">
-              Scholarships, support programs, and welfare assistance.
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all animate-fade-in-scale delay-200">
-            <div className="text-6xl mb-4">🏆</div>
-            <h3 className="text-xl font-bold text-green mb-2">
-              Sports & Events
-            </h3>
-            <p className="text-mediumGray">
-              Sports competitions, youth events, and talent engagement.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all animate-fade-in-scale delay-300">
-            <div className="text-6xl mb-4">🎟️</div>
-            <h3 className="text-xl font-bold text-green mb-2">
-              Digital Registration
-            </h3>
-            <p className="text-mediumGray">
-              Online registration, token-based games, and entry tracking.
-            </p>
-          </div>
         </div>
       </div>
     </div>

@@ -3,19 +3,20 @@ import { useAuthContext } from "../../context/AuthContext";
 import UserLayout from "../../layout/User";
 import AuthLayout from "../../layout/Auth";
 import AdminLayout from "../../layout/Admin";
-import logo from "/logo.png";
+import logo from "/logo.jpg";
 
 const Root = () => {
   const { isAuthenticated, role, splashLoading } = useAuthContext();
 
   return (
-    <div className=" relative laptop-sm:pb-24 min-h-screen">
+    <div className="w-full min-h-screen bg-linear-to-br from-[#FF9800] via-[#F57C00] to-[#E65100]">
       {splashLoading ? (
-        <div className="h-screen flex flex-col items-center justify-center text-white bg-black w-full">
-          <img src={logo} className="animate-pulse " alt="" />
-          <span className="text-secondary text-lg">
-            Social Welfare Committee Loading....
-          </span>
+        <div className="h-screen flex flex-col items-center justify-center text-white bg-linear-to-br from-[#FF9800] via-[#F57C00] to-[#E65100] w-full">
+          <img
+            src={logo}
+            className="animate-spin scale-3d w-36 h-36 rounded-full "
+            alt=""
+          />
         </div>
       ) : (
         <Routes>
@@ -64,7 +65,7 @@ const Root = () => {
         </Routes>
       )}
 
-      {/* <footer className="absolute bottom-0 border-t py-6 text-center text-sm bg-black text-gray-50 w-full ">
+      <footer className="border-t py-6 text-center text-sm bg-black text-gray-50 w-full ">
         <p>
           App Created:{" "}
           <a
@@ -81,7 +82,7 @@ const Root = () => {
           Serving the community with dedication since establishment
         </p>
         <p>© {new Date().getFullYear()} All Rights Reserved</p>
-      </footer> */}
+      </footer>
     </div>
   );
 };

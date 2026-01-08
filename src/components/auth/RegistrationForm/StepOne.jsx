@@ -34,37 +34,58 @@ const StepOne = () => {
   };
 
   return (
-    <div>
-      <CustomInput
-        label="Date of Birth"
-        name="dob"
-        type="date"
-        value={values.dob}
-        onChange={handleChange}
-      />
-
-      {/* Age Criteria Message */}
-      {values.dob && (
-        <p
-          className={`mt-2 text-sm font-medium ${
-            ageError.includes("❌") ? "text-red-600" : "text-green-600"
-          }`}
-        >
-          {ageError}
+    <div className="space-y-6 bg-white/5 laptop-sm:p-6 rounded-2xl backdrop-blur-sm border border-white/10">
+      {/* Header for Step */}
+      <div className="border-l-4 border-[#002D62] pl-3 mb-6">
+        <h3 className="text-[#002D62] font-black uppercase tracking-wider text-lg">
+          Personal Information
+        </h3>
+        <p className="text-gray-500 text-xs">
+          Enter your birth details and gender
         </p>
-      )}
+      </div>
 
-      <CustomInput
-        label="Gender"
-        name="gender"
-        type="select"
-        options={[
-          { label: "Male", value: "male" },
-          { label: "Female", value: "female" },
-        ]}
-        value={values.gender}
-        onChange={handleChange}
-      />
+      <div className="space-y-4">
+        {/* Date of Birth Input */}
+        <div className="relative group">
+          <CustomInput
+            label="Date of Birth"
+            name="dob"
+            type="date"
+            value={values.dob}
+            onChange={handleChange}
+            // Tip: Ensure CustomInput uses focus:border-[#F57C00] for theme matching
+          />
+
+          {/* Age Criteria Message - Themed Colors */}
+          {values.dob && (
+            <div
+              className={`mt-2 flex items-center gap-2 p-2 italic rounded-lg text-xs  uppercase tracking-tighter ${
+                ageError.includes("❌")
+                  ? "bg-red-50 text-red-600 border border-red-200"
+                  : "bg-green-50 text-[#4CAF50] border border-[#4CAF50]/30"
+              }`}
+            >
+              {ageError}
+            </div>
+          )}
+        </div>
+
+        {/* Gender Selection */}
+        <div className="relative group">
+          <CustomInput
+            label="Gender"
+            name="gender"
+            type="select"
+            options={[
+              { label: "Male", value: "male" },
+              { label: "Female", value: "female" },
+            ]}
+            value={values.gender}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
     </div>
   );
 };

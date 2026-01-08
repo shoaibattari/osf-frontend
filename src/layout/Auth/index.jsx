@@ -6,7 +6,7 @@ import { RegistrationForm } from "../../components/auth";
 
 const AuthLayout = () => {
   return (
-    <div>
+    <div className="min-h-screen">
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/register" element={<RegistrationForm />} />
