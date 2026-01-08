@@ -118,28 +118,42 @@ const StepThree = () => {
           value={values.fatherName}
           onChange={handleChange}
         />
-        <CustomInput
-          label="OMJ Card Number"
-          name="omjCard"
-          value={values.omjCard}
-          onChange={handleChange}
-          placeholder="12345-12-54321"
-        />
-        <CustomInput
-          label="CNIC Number"
-          name="cnic"
-          value={values.cnic}
-          onChange={handleChange}
-          placeholder="12345-1234567-0"
-        />
-        <CustomInput
-          label="WhatsApp Number"
-          name="whatsapp"
-          value={values.whatsapp}
-          onChange={handleChange}
-          placeholder="0331-3416850"
-        />
-
+        <div className="flex flex-col gap-0">
+          <CustomInput
+            label="OMJ Card Number"
+            name="omjCard"
+            value={values.omjCard}
+            onChange={handleChange}
+            placeholder="12345-12-54321"
+          />
+          <p className="text-xs text-[#002D62] leading-0">
+            Format: 12345-12-54321
+          </p>
+        </div>
+        <div className="flex flex-col gap-0">
+          <CustomInput
+            label="CNIC Number"
+            name="cnic"
+            value={values.cnic}
+            onChange={handleChange}
+            placeholder="12345-1234567-0"
+          />
+          <p className="text-xs text-[#002D62] leading-0">
+            Format: 12345-1234567-0
+          </p>
+        </div>
+        <div className="flex flex-col gap-0">
+          <CustomInput
+            label="WhatsApp Number"
+            name="whatsapp"
+            value={values.whatsapp}
+            onChange={handleChange}
+            placeholder="0300-0000000"
+          />
+          <p className="text-xs text-[#002D62] leading-0">
+            Format: 0300-0000000
+          </p>
+        </div>
         <CustomInput
           label="Kit Size"
           name="kitSize"

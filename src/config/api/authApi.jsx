@@ -12,6 +12,7 @@ const authApi = (api) => ({
     api.get("/register", {
       params: { search, page, limit },
     }),
+  getParticipantStats: () => api.get("/register/stats"), //
 });
 
 export default authApi;

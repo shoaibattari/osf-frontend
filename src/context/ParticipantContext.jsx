@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import apis from "../config/api";
 
@@ -32,6 +32,10 @@ export const ParticipantProvider = ({ children }) => {
   const [participants, setParticipants] = useState([]);
   const [pagination, setPagination] = useState(null);
 
+  const [stats, setStats] = useState({
+    totalParticipants: 0,
+    ageGroups: {}, // { "5-10": 10, "11-15": 20, ... }
+  });
   /* --------------------------------
      Clear Registration Data
   -------------------------------- */
@@ -77,6 +81,18 @@ export const ParticipantProvider = ({ children }) => {
     },
   });
 
+  const { mutate: fetchStats, isLoading: fetchingStats } = useMutation({
+    mutationFn: async () => {
+      const res = await apis.getParticipantStats(); // backend route for stats
+      return res.data;
+    },
+    onSuccess: (data) => {
+      if (data) setStats(data);
+      else toast.error("Failed to fetch stats");
+    },
+    onError: (err) => toast.error(err?.message || "Error fetching stats"),
+  });
+
   return (
     <ParticipantContext.Provider
       value={{
@@ -94,6 +110,10 @@ export const ParticipantProvider = ({ children }) => {
         pagination,
         fetchAllParticipants,
         fetchingParticipants,
+
+        stats,
+        fetchStats,
+        fetchingStats,
       }}
     >
       {children}
