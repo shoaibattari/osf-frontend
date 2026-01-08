@@ -1,5 +1,5 @@
-export const baseUrl = "http://localhost:5000";
-// export const baseUrl = "https://ems-production-aff7.up.railway.app";
+// export const baseUrl = "http://localhost:5000";
+export const baseUrl = "https://osf-backend-production.up.railway.app";
 
 export const calculateAgeGroup = (dob) => {
   const birth = new Date(dob);
