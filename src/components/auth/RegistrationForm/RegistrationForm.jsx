@@ -108,7 +108,7 @@ function RegistrationForm() {
         onSubmit={handleSubmit}
         enableReinitialize
       >
-        {({ isValid, dirty }) => (
+        {({ isValid, dirty, values }) => (
           <Form>
             <CurrentStep />
             <div className="flex justify-between mt-6">
@@ -125,7 +125,24 @@ function RegistrationForm() {
                 <button
                   type="button"
                   onClick={nextStep}
-                  className="px-4 py-2 bg-blue-500 text-white rounded"
+                  disabled={
+                    // Step 1 conditions
+                    (currentStep === 0 &&
+                      (!values.dob ||
+                        !values.gender ||
+                        !participantData.ageGroup)) ||
+                    // Step 2 conditions
+                    (currentStep === 1 && values.selectedGames.length === 0)
+                  }
+                  className={`px-4 py-2 rounded ${
+                    (currentStep === 0 &&
+                      (!values.dob ||
+                        !values.gender ||
+                        !participantData.ageGroup)) ||
+                    (currentStep === 1 && values.selectedGames.length === 0)
+                      ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      : "bg-blue-500 text-white"
+                  }`}
                 >
                   Next
                 </button>

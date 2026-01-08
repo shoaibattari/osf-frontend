@@ -7,13 +7,16 @@ const StepTwo = () => {
   const { setFieldValue } = useFormikContext();
   const { participantData, selectedGames, setSelectedGames } = useParticipant();
   const [availableGames, setAvailableGames] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (participantData.gender && participantData.ageGroup) {
+      setLoading(true);
       apis
         .getGamesByCriteria(participantData.gender, participantData.ageGroup)
         .then((res) => setAvailableGames(res.data))
-        .catch((err) => console.error(err));
+        .catch((err) => console.error(err))
+        .finally(() => setLoading(false));
     }
   }, [participantData.gender, participantData.ageGroup]);
 
@@ -22,7 +25,11 @@ const StepTwo = () => {
     if (updated.some((g) => g.gameId === game._id)) {
       updated = updated.filter((g) => g.gameId !== game._id);
     } else {
-      updated.push({ gameId: game._id, gameName: game.gameName, token: game.token });
+      updated.push({
+        gameId: game._id,
+        gameName: game.gameName,
+        token: game.token,
+      });
     }
     setSelectedGames(updated);
     setFieldValue("selectedGames", updated);
@@ -31,21 +38,35 @@ const StepTwo = () => {
   return (
     <div>
       <h2 className="font-bold mb-4">Select Games</h2>
-      <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4">
-        {availableGames.map((game) => (
-          <div
-            key={game._id}
-            className={`p-4 border rounded cursor-pointer ${
-              selectedGames.some((g) => g.gameId === game._id)
-                ? "bg-green-100 border-green-500"
-                : "bg-white"
-            }`}
-            onClick={() => handleSelectGame(game)}
-          >
-            {game.gameName}
-          </div>
-        ))}
-      </div>
+
+      {loading && <p className="text-gray-500">Loading available games...</p>}
+
+      {!loading && availableGames.length === 0 && (
+        <div className="p-4 bg-yellow-50 border border-yellow-300 rounded text-yellow-800">
+          🙏 <strong>Thank you for your interest!</strong>
+          <br />
+          Unfortunately, all game slots for this age criteria are currently
+          <strong> full</strong>.
+        </div>
+      )}
+
+      {availableGames.length > 0 && (
+        <div className="grid grid-cols-1 tablet:grid-cols-2 gap-4">
+          {availableGames.map((game) => (
+            <div
+              key={game._id}
+              className={`p-4 border rounded cursor-pointer ${
+                selectedGames.some((g) => g.gameId === game._id)
+                  ? "bg-green-100 border-green-500"
+                  : "bg-white"
+              }`}
+              onClick={() => handleSelectGame(game)}
+            >
+              {game.gameName}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
