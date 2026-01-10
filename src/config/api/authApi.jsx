@@ -8,11 +8,20 @@ const authApi = (api) => ({
     api.post("/register", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }),
-  getParticipants: ({ search = "", page = 1, limit = 10 } = {}) =>
+  getParticipants: ({
+    search = "",
+    page = 1,
+    limit = 10,
+    paymentStatus,
+  } = {}) =>
     api.get("/register", {
-      params: { search, page, limit },
+      params: { search, page, limit, paymentStatus },
     }),
   getParticipantStats: () => api.get("/register/stats"), //
+  updatePaymentStatus: (id, paymentStatus) =>
+    api.patch(`/register/${id}/payment-status`, {
+      paymentStatus,
+    }),
 });
 
 export default authApi;

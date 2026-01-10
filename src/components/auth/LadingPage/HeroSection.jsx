@@ -42,8 +42,21 @@ const HomePage = () => {
           development.
         </p>
 
+        <div className="mt-8 bg-white/90 text-black p-4 md:p-6 rounded-lg max-w-xl text-start shadow-lg border-l-8 border-green-600">
+          <h3 className="font-bold text-lg md:text-xl mb-2 underline">
+            Instructions:
+          </h3>
+          <ul className="list-disc list-outside ml-3 text-sm md:text-base space-y-1">
+            <li>ONLY FOR OKHAI MEMON COMMUNITY</li>
+            <li>AGE CRITERIA: 8 TO 16 YEARS</li>
+            <li>
+              ONE CANDIDATE CAN SELECT TWO GAMES, BUT IF SNAKE & LETTER IS
+              SELECTED, NO SECOND GAME IS ALLOWED
+            </li>
+          </ul>
+        </div>
         {/* CTA Button - Green Theme from Logo */}
-        <div className="mt-10">
+        <div className="my-10">
           <button
             onClick={() => navigate("/register")}
             className=" px-4 laptop-sm:px-10 py-4 rounded-md cursor-pointer bg-[#4CAF50] hover:bg-[#388E3C] text-white font-bold text-sm laptop:text-xl uppercase tracking-wider shadow-[0_8px_0_rgb(27,94,32)] active:translate-y-[4px] active:shadow-none transition-all duration-150 flex items-center gap-3"

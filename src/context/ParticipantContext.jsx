@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import apis from "../config/api";
 
@@ -64,8 +64,8 @@ export const ParticipantProvider = ({ children }) => {
     mutate: fetchAllParticipants,
     isPending: fetchingParticipants,
   } = useMutation({
-    mutationFn: ({ search = "", page = 1, limit = 10 }) =>
-      apis.getParticipants({ search, page, limit }),
+    mutationFn: ({ search = "", page = 1, limit = 10, paymentStatus }) =>
+      apis.getParticipants({ search, page, limit, paymentStatus }),
 
     onSuccess: ({ data }) => {
       if (data) {

@@ -111,12 +111,14 @@ const StepThree = () => {
           name="name"
           value={values.name}
           onChange={handleChange}
+          placeholder="Enter Full Name"
         />
         <CustomInput
           label="Father Name"
           name="fatherName"
           value={values.fatherName}
           onChange={handleChange}
+          placeholder="Enter Father Name"
         />
         <div className="flex flex-col gap-0">
           <CustomInput

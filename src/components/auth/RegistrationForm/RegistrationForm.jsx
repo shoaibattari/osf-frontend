@@ -251,20 +251,20 @@ const SuccessModalContent = ({ data }) => {
 
   return (
     <div className="w-full text-left">
-      <div className="text-center mb-6">
-        <div className="w-16 h-16 bg-green-100 text-[#4CAF50] rounded-full flex items-center justify-center mx-auto mb-3 text-3xl">
-          ✓
-        </div>
+      <div className="text-center mb-2">
+        <Logo />
         <h2 className="text-2xl font-black text-[#002D62] uppercase italic">
           Success!
         </h2>
         <p className="text-sm text-gray-500 font-medium">
           Registration ID:{" "}
-          <span className="text-[#F57C00]">{data.participantId}</span>
+          <span className="text-base font-bold text-[#F57C00]">
+            {data.participantId}
+          </span>
         </p>
       </div>
 
-      <div className="max-h-[400px] overflow-y-auto pr-2 custom-scrollbar space-y-4">
+      <div className="max-h-[400px] overflow-y-auto pr-2 custom-scrollbar space-y-2">
         <div className="bg-gray-50 rounded-2xl p-4 border border-dashed border-gray-300">
           <h3 className="text-[#002D62] font-bold text-sm uppercase mb-3 border-b pb-1">
             Personal Details
@@ -277,13 +277,13 @@ const SuccessModalContent = ({ data }) => {
 
         <div className="bg-[#002D62]/5 rounded-2xl p-4 border border-[#002D62]/10">
           <h3 className="text-[#002D62] font-bold text-sm uppercase mb-3 border-b border-[#002D62]/20 pb-1">
-            Sports Selected
+            Games Selected
           </h3>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             {data.gamesSelected?.map((game) => (
               <span
                 key={game.gameId}
-                className="px-3 py-1 text-xs font-bold bg-[#4CAF50] text-white rounded-lg uppercase"
+                className="px-3 py-2 text-xs font-bold text-center w-full laptop:w-fit bg-[#4CAF50] text-white rounded-lg uppercase"
               >
                 {game.gameName}
               </span>
@@ -291,7 +291,7 @@ const SuccessModalContent = ({ data }) => {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-4 border border-gray-200">
+        {/* <div className="bg-white rounded-2xl p-4 border border-gray-200">
           <h3 className="text-[#002D62] font-bold text-sm uppercase mb-3">
             Payment Info
           </h3>
@@ -308,12 +308,12 @@ const SuccessModalContent = ({ data }) => {
               className="w-full rounded-xl border-2 border-white shadow-sm"
             />
           )}
-        </div>
+        </div> */}
       </div>
 
       <button
         onClick={() => window.print()}
-        className="w-full mt-6 py-3 bg-[#002D62] text-white font-bold rounded-xl shadow-lg hover:bg-[#F57C00] transition-colors uppercase tracking-widest text-sm"
+        className="w-full mt-6 py-3 cursor-pointer bg-[#002D62] text-white font-bold rounded-xl shadow-lg hover:bg-[#F57C00] transition-colors uppercase tracking-widest text-sm"
       >
         Download Slip
       </button>
