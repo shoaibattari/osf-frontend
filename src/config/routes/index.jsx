@@ -76,11 +76,7 @@ const Root = () => {
             Shoaib Abdul Sattar Khosa{" "}
           </a>
         </p>
-        <p>Vice Chairman (OMJ IT Committee)</p>
-        <p>Okhai Memon Jamat Social Welfare Committee</p>
-        <p className="text-mediumGray">
-          Serving the community with dedication since establishment
-        </p>
+        <p>OMJ IT Committee</p>
         <p>© {new Date().getFullYear()} All Rights Reserved</p>
       </footer>
     </div>
