@@ -26,9 +26,9 @@ const validationSchemas = [
   Yup.object().shape({
     name: Yup.string().required("Full name is required"),
     fatherName: Yup.string().required("Father name is required"),
-    omjCard: Yup.string()
-      .matches(/^\d{5}-\d{2}-\d{5}$/, "Format: 12345-12-54321")
-      .required("Required"),
+    // omjCard: Yup.string()
+    //   .matches(/^\d{5}-\d{2}-\d{5}$/, "Format: 12345-12-54321")
+    //   .required("Required"),
     cnic: Yup.string()
       .matches(/^\d{5}-\d{7}-\d{1}$/, "Format: 12345-1234567-0")
       .required("Required"),
@@ -310,13 +310,14 @@ const SuccessModalContent = ({ data }) => {
           )}
         </div> */}
       </div>
-
-      <button
-        onClick={() => window.print()}
-        className="w-full mt-6 py-3 cursor-pointer bg-[#002D62] text-white font-bold rounded-xl shadow-lg hover:bg-[#F57C00] transition-colors uppercase tracking-widest text-sm"
-      >
-        Download Slip
-      </button>
+      <div className="flex items-center justify-center py-1">
+        <a
+          href="https://chat.whatsapp.com/ClHGloZ4deFAAaOXDxMM6U"
+          className="w-fit text-center py-3 px-3 cursor-pointer bg-green-600 text-white font-bold rounded-xl shadow-lg hover:bg-green-700 transition-colors uppercase tracking-widest text-sm"
+        >
+          Join WhatsApp Group
+        </a>
+      </div>
     </div>
   );
 };

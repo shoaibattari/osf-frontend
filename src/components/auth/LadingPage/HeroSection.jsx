@@ -48,11 +48,17 @@ const HomePage = () => {
           </h3>
           <ul className="list-disc list-outside ml-3 text-sm md:text-base space-y-1">
             <li>ONLY FOR OKHAI MEMON COMMUNITY</li>
-            <li>AGE CRITERIA: 8 TO 16 YEARS</li>
+            <li>AGE CRITERIA: 6 TO 16 YEARS</li>
+            <li>FEES: RS. 350/- PER PARTICIPANT</li>
             <li>
-              ONE CANDIDATE CAN SELECT TWO GAMES, BUT IF SNAKE & LETTER IS
+              ONE CANDIDATE CAN SELECT TWO GAMES, BUT IF SNAKE & LADDERS IS
               SELECTED, NO SECOND GAME IS ALLOWED
             </li>
+
+            <li>
+              T-SHIRTS & LUNCH (FOR PARTICIPANTS) WILL BE PROVIDED BY MANAGEMENT
+            </li>
+            <li>FESTIVAL WILL BE HELD AFTER RAMZAN</li>
           </ul>
         </div>
         {/* CTA Button - Green Theme from Logo */}

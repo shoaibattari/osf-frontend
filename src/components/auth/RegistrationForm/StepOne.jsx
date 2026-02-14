@@ -18,7 +18,8 @@ const StepOne = () => {
       const age = new Date().getFullYear() - new Date(value).getFullYear();
       let ageGroup = "";
 
-      if (age >= 8 && age <= 10) ageGroup = "8-10";
+      if (age >= 6 && age <= 8) ageGroup = "6-8";
+      else if (age > 8 && age <= 10) ageGroup = "8-10";
       else if (age > 10 && age <= 12) ageGroup = "10-12";
       else if (age > 12 && age <= 14) ageGroup = "12-14";
       else if (age > 14 && age <= 16) ageGroup = "14-16";
