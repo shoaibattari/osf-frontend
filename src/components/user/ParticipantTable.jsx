@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 import apis from "../../config/api";
 import { FaFileExcel } from "react-icons/fa";
 import { baseUrl } from "../../constants";
+import EditParticipantModal from "./EditParticipantModal";
+import { FaPencil } from "react-icons/fa6";
 
 const ParticipantsTable = () => {
   const {
@@ -21,6 +23,8 @@ const ParticipantsTable = () => {
   const [paymentFilter, setPaymentFilter] = useState("all"); // NEW: filter state
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(5);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [selectedParticipant, setSelectedParticipant] = useState(null);
 
   const debounceTimeout = useRef(null);
 
@@ -144,12 +148,22 @@ const ParticipantsTable = () => {
       label: "Action",
       accessor: "action",
       renderCell: (row) => (
-        <div className="flex gap-2">
+        <div className="flex flex-row laptop-sm:flex-col items-center gap-2">
+          <button
+            onClick={() => {
+              setSelectedParticipant(row);
+              setIsEditOpen(true);
+            }}
+            className="p-2 rounded bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+            title="Edit Participant"
+          >
+            <FaPencil size={12} />
+          </button>
           <button
             onClick={() =>
               updatePaymentStatus({ id: row.id, paymentStatus: "paid" })
             }
-            className="p-2 rounded bg-green-600 hover:bg-green-700 text-white"
+            className="p-2 rounded bg-green-600 hover:bg-green-700 text-white cursor-pointer"
             title="Mark as Paid"
             disabled={updating || row.paymentStatus === "paid"}
           >
@@ -160,7 +174,7 @@ const ParticipantsTable = () => {
             onClick={() =>
               updatePaymentStatus({ id: row.id, paymentStatus: "rejected" })
             }
-            className="p-2 rounded bg-red-600 hover:bg-red-700 text-white"
+            className="p-2 rounded bg-red-600 hover:bg-red-700 text-white cursor-pointer"
             title="Reject Payment"
             disabled={updating || row.paymentStatus === "rejected"}
           >
@@ -192,46 +206,62 @@ const ParticipantsTable = () => {
   };
 
   return (
-    <WhiteContainer>
-      <div className="flex justify-end  items-center gap-2">
-        {/* -----------------------------
+    <>
+      <WhiteContainer>
+        <div className="flex justify-end  items-center gap-2">
+          {/* -----------------------------
          Payment Status Filter Dropdown and excel export
       ----------------------------- */}
 
-        <div className="flex justify-end items-center gap-2">
-          <button
-            onClick={downloadExcel}
-            className="flex items-center gap-1 px-3 py-1 bg-green-700 text-white rounded hover:bg-green-800"
-          >
-            <FaFileExcel size={14} /> Export Excel
-          </button>
-          <select
-            value={paymentFilter}
-            onChange={(e) => setPaymentFilter(e.target.value)}
-            className="border border-gray-500 rounded px-2 py-1"
-          >
-            <option value="all">All</option>
-            <option value="paid">Paid</option>
-            <option value="pending">Pending</option>
-            <option value="rejected">Rejected</option>
-          </select>
+          <div className="flex justify-end items-center gap-2">
+            <button
+              onClick={downloadExcel}
+              className="flex items-center gap-1 px-3 py-1 bg-green-700 text-white rounded hover:bg-green-800"
+            >
+              <FaFileExcel size={14} /> Export Excel
+            </button>
+            <select
+              value={paymentFilter}
+              onChange={(e) => setPaymentFilter(e.target.value)}
+              className="border border-gray-500 rounded px-2 py-1"
+            >
+              <option value="all">All</option>
+              <option value="paid">Paid</option>
+              <option value="pending">Pending</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <DynamicTable
-        hideSearchBar={false}
-        hidePageSize={true}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        columns={columns}
-        data={participants}
-        loading={fetchingParticipants || updating}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalPages={pagination?.totalPages || 1}
-        pageSize={pageSize}
-        setPageSize={setPageSize}
+        <DynamicTable
+          hideSearchBar={false}
+          hidePageSize={true}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          columns={columns}
+          data={participants}
+          loading={fetchingParticipants || updating}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          totalPages={pagination?.totalPages || 1}
+          pageSize={pageSize}
+          setPageSize={setPageSize}
+        />
+      </WhiteContainer>
+
+      <EditParticipantModal
+        isOpen={isEditOpen}
+        onClose={() => setIsEditOpen(false)}
+        participant={selectedParticipant}
+        refetch={() =>
+          fetchAllParticipants({
+            search: searchTerm,
+            page: currentPage,
+            limit: pageSize,
+            paymentStatus: paymentFilter !== "all" ? paymentFilter : undefined,
+          })
+        }
       />
-    </WhiteContainer>
+    </>
   );
 };
 

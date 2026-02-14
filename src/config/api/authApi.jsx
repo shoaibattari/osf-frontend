@@ -22,6 +22,8 @@ const authApi = (api) => ({
     api.patch(`/register/${id}/payment-status`, {
       paymentStatus,
     }),
+
+  updateInfo: (id, data) => api.patch(`/register/${id}/basic-info`, data),
 });
 
 export default authApi;
