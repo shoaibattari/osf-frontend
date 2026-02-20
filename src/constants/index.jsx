@@ -1,6 +1,7 @@
 // export const baseUrl = "http://localhost:5000";
 export const baseUrl =
-  "https://backend-sportsfestival-okhaimemon.up.railway.app";
+  "https://osf-backend-production.up.railway.app";
+  // "https://backend-sportsfestival-okhaimemon.up.railway.app";
 // export const baseUrl = "https://osf-backend-production.up.railway.app";
 
 export const calculateAgeGroup = (dob) => {
